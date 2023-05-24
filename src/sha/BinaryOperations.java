@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryOperations {
-    // NOT
     public static String not(String number) {
         char[] n = number.toCharArray();
         List<String> x = new ArrayList<>();
@@ -20,7 +19,6 @@ public class BinaryOperations {
         return String.join("", x);
     }
 
-    // AND
     public static String and(String first, String second) {
         char[] f = first.toCharArray();
         char[] s = second.toCharArray();
@@ -37,7 +35,6 @@ public class BinaryOperations {
         return String.join("", x);
     }
 
-    // XOR
     public static String xor(String first, String second) {
         char[] f = first.toCharArray();
         char[] s = second.toCharArray();
@@ -70,5 +67,29 @@ public class BinaryOperations {
         }
 
         return res.toString();
+    }
+
+    // Rotate right - Characters should be moved by distance indexes to the right and
+    // characters from the end of String should fill the first X characters of String until char[distance] is met
+    public static String rotateRight(String integer, int distance) {
+        char[] original = integer.toCharArray();
+        char[] rotated = new char[original.length];
+
+        for(int i = 0; i < original.length; i++) {
+            rotated[(i + distance) % rotated.length] = original[i];
+        }
+
+        return String.valueOf(rotated);
+    }
+
+    // Shift right - Insert distance amount of 0, and then return string from 0 to 32
+    public static String shiftRight(String integer, int distance) {
+        StringBuilder sb = new StringBuilder(integer);
+
+        for (int i = 0; i < distance; i++) {
+            sb.insert(0, "0");
+        }
+
+        return sb.substring(0, 32);
     }
 }
